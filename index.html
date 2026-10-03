@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURO University Surat - Experience Excellence</title>
+    <style>
+        /* CSS Variables & Global Styles */
+        :root {
+            --primary: #1e3a8a;
+            --accent: #f59e0b;
+            --light-bg: #f8fafc;
+            --dark-text: #0f172a;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .badge {
+            background-color: var(--accent);
+            color: black;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--primary);
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Games Section Header */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .game-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            background-color: #e2e8f0;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Game Containers */
+        .game-wrapper {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            display: none;
+        }
+
+        .game-wrapper.active {
+            display: block;
+        }
+
+        /* Game 1: Quiz */
+        .quiz-option {
+            background: var(--light-bg);
+            border: 2px solid #cbd5e1;
+            padding: 0.75rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .quiz-option:hover {
+            background: #e2e8f0;
+        }
+
+        .quiz-option.correct {
+            background: #dcfce7;
+            border-color: #22c55e;
+            color: #15803d;
+        }
+
+        .quiz-option.wrong {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #b91c1c;
+        }
+
+        /* Game 2: Catch Cap */
+        #game-board {
+            width: 100%;
+            height: 300px;
+            background: #eff6ff;
+            border: 2px dashed #93c5fd;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+
+        .cap {
+            font-size: 2.5rem;
+            position: absolute;
+            user-select: none;
+            transition: top 0.1s linear, left 0.1s linear;
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: black;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        /* CTA & Footer */
+        .cta-section {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            border-radius: 16px;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Header -->
+    <header>
+        <span class="badge">Admissions Open 2026</span>
+        <h1>AURO University, Surat</h1>
+        <p>Integral Learning & Experiential Education in the Heart of Gujarat</p>
+    </header>
+
+    <div class="container">
+        <!-- Key Highlights -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Global Curriculum</h3>
+                <p>Offering world-class education in Management, Law, Design, IT, and Hospitality.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Modern Campus</h3>
+                <p>State-of-the-art infrastructure designed to foster holistic personal and professional development.</p>
+            </div>
+            <div class="feature-card">
+                <h3>100% Placement Support</h3>
+                <p>Strong industry linkages, mentorship programs, and top recruiter tie-ups.</p>
+            </div>
+        </div>
+
+        <!-- Fun Games Section -->
+        <div class="section-title">
+            <h2>Take a Break & Play!</h2>
+            <p>Test your knowledge or catch graduation caps to win virtual campus badges.</p>
+        </div>
+
+        <div class="game-tabs">
+            <button class="tab-btn active" onclick="switchGame('trivia')">Campus Trivia</button>
+            <button class="tab-btn" onclick="switchGame('catch')">Cap Catcher</button>
+        </div>
+
+        <!-- Game 1: Trivia -->
+        <div id="trivia-game" class="game-wrapper active">
+            <div id="quiz-container">
+                <h3 id="quiz-question" style="margin-bottom: 1rem;">Loading Question...</h3>
+                <div id="quiz-options"></div>
+                <div id="quiz-feedback" style="margin-top: 1rem; font-weight: bold;"></div>
+            </div>
+        </div>
+
+        <!-- Game 2: Cap Catcher -->
+        <div id="catch-game" class="game-wrapper">
+            <div class="game-stats">
+                <span>Score: <span id="score">0</span></span>
+                <span>Time Left: <span id="timer">15</span>s</span>
+                <button class="btn-primary" id="start-btn" onclick="startGame()">Start Game</button>
+            </div>
+            <div id="game-board"></div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>Ready to Shape Your Future?</h2>
+            <p style="margin-bottom: 1.5rem;">Join AURO University Surat and experience a transformative educational journey.</p>
+            <button class="btn-primary" onclick="alert('Thank you for your interest! Redirecting to AURO University Admissions portal...')">Apply Now</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AURO University, Surat. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tab Switcher
+        function switchGame(gameType) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.game-wrapper').forEach(game => game.classList.remove('active'));
+
+            if (gameType === 'trivia') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('trivia-game').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('catch-game').classList.add('active');
+            }
+        }
+
+        // --- Game 1: Trivia Logic ---
+        const questions = [
+            {
+                q: "What concept is AURO University built upon?",
+                options: ["Integral Education", "Rote Learning", "Distance Learning Only", "Exam-Only Focus"],
+                answer: 0
+            },
+            {
+                q: "Which city is AURO University located in?",
+                options: ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
+                answer: 1
+            },
+            {
+                q: "Surat is famously known worldwide as the city of...?",
+                options: ["Automobiles", "Diamonds & Textiles", "Tea Plantations", "Software Parks"],
+                answer: 1
+            }
+        ];
+
+        let currentQ = 0;
+
+        function loadQuestion() {
+            const qData = questions[currentQ];
+            document.getElementById('quiz-question').innerText = `Q${currentQ + 1}: ${qData.q}`;
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+            document.getElementById('quiz-feedback').innerText = '';
+
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('div');
+                btn.className = 'quiz-option';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(idx, qData.answer);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selected, correct) {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.onclick = null); // Disable clicking
+
+            if (selected === correct) {
+                options[selected].classList.add('correct');
+                document.getElementById('quiz-feedback').innerText = "✨ Correct! Welcome to the smart side.";
+            } else {
+                options[selected].classList.add('wrong');
+                options[correct].classList.add('correct');
+                document.getElementById('quiz-feedback').innerText = "❌ Oops! Better luck on the next question.";
+            }
+
+            setTimeout(() => {
+                currentQ = (currentQ + 1) % questions.length;
+                loadQuestion();
+            }, 1800);
+        }
+
+        loadQuestion();
+
+        // --- Game 2: Cap Catcher Logic ---
+        let score = 0;
+        let timeLeft = 15;
+        let gameInterval;
+        let timerInterval;
+
+        function startGame() {
+            score = 0;
+            timeLeft = 15;
+            document.getElementById('score').innerText = score;
+            document.getElementById('timer').innerText = timeLeft;
+            document.getElementById('start-btn').disabled = true;
+
+            const board = document.getElementById('game-board');
+            board.innerHTML = '';
+
+            // Spawn Cap
+            spawnCap();
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    board.innerHTML = '';
+                    document.getElementById('start-btn').disabled = false;
+                    alert(`Game Over! You caught ${score} graduation caps! 🎓`);
+                }
+            }, 1000);
+        }
+
+        function spawnCap() {
+            const board = document.getElementById('game-board');
+            board.innerHTML = '';
+
+            if (timeLeft <= 0) return;
+
+            const cap = document.createElement('div');
+            cap.className = 'cap';
+            cap.innerText = '🎓';
+
+            const maxX = board.clientWidth - 50;
+            const maxY = board.clientHeight - 50;
+
+            cap.style.left = Math.random() * maxX + 'px';
+            cap.style.top = Math.random() * maxY + 'px';
+
+            cap.onclick = () => {
+                score++;
+                document.getElementById('score').innerText = score;
+                spawnCap();
+            };
+
+            board.appendChild(cap);
+        }
+    </script>
+</body>
+</html>
